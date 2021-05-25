@@ -47,10 +47,12 @@ public class RadarView extends View
         canvas.drawCircle(halfWidth, halfHeight, radius, _color);
         canvas.drawCircle(halfWidth, halfHeight, radius * 2, _color);
         canvas.drawCircle(halfWidth, halfHeight, radius * 3, _color);
+        _color.setAlpha(80);
         canvas.drawLine(halfWidth, 100, halfWidth, halfHeight - 100, _color);
         canvas.drawLine(halfWidth, halfHeight + 100, halfWidth, height - 100, _color);
         canvas.drawLine(0, halfHeight, halfWidth - 100, halfHeight, _color);
         canvas.drawLine(halfWidth + 100, halfHeight, width, halfHeight, _color);
+        _color.setAlpha(255);
         _color.setStyle(Paint.Style.FILL);
         canvas.drawCircle(halfWidth, halfHeight, 20, _color);
 
