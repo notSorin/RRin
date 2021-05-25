@@ -42,19 +42,19 @@ void sendI2C(int angle, int distance)
 
 void loop()
 {
-  for(int servoAngle = 0; servoAngle < 180; servoAngle += 10)
+  for(int servoAngle = 0; servoAngle <= 180; servoAngle += 10)
   {
     servo.write(servoAngle);
     int distance = calculateDistance();
     sendI2C(servoAngle, distance);
-    delay(1000);
+    delay(500);
   }
 
-  for(int servoAngle = 180; servoAngle > 0; servoAngle -= 10)
+  for(int servoAngle = 180; servoAngle >= 0; servoAngle -= 10)
   {
     servo.write(servoAngle);
     int distance = calculateDistance();
     sendI2C(servoAngle, distance);
-    delay(1000);
+    delay(500);
   }
 }
