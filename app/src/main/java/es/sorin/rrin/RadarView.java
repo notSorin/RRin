@@ -80,10 +80,10 @@ public class RadarView extends View
 
         canvas.drawLine(halfWidth, halfHeight, x, y, _color);
 
-        //Text.
-        canvas.drawText("0cm", halfWidth + 20, halfHeight + 30, _color);
-        canvas.drawText("20cm", halfWidth + radius + 10, halfHeight + 30, _color);
-        canvas.drawText("40cm", halfWidth + radius * 2 + 10, halfHeight + 30, _color);
+        //Distance texts.
+        canvas.drawText("33cm", halfWidth + 10, halfHeight - radius - 10, _color);
+        canvas.drawText("66cm", halfWidth + 10, halfHeight - radius * 2 - 10, _color);
+        canvas.drawText("1m", halfWidth + 10, halfHeight - radius * 3 - 10, _color);
 
         //Check if any available points need to be removed.
         for(int i = 0; i < _points.size(); )
