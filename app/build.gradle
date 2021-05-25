@@ -29,5 +29,5 @@ android {
 }
 
 dependencies {
-
+    implementation 'com.github.harry1453:android-bluetooth-serial:v1.1'
 }
