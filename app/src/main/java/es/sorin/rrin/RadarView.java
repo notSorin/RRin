@@ -9,6 +9,7 @@ import android.view.View;
 public class RadarView extends View
 {
     private final Paint _color;
+    private final Paint _red;
     private float _sweepAngle;
 
     public RadarView(Context context, AttributeSet attrs)
@@ -16,11 +17,15 @@ public class RadarView extends View
         super(context, attrs);
 
         _color = new Paint();
+        _red = new Paint();
 
         _color.setColor(0xFF17d801);
+        _red.setColor(0xFFea3019);
         _color.setStrokeWidth(10.0f);
         _color.setAntiAlias(true);
+        _red.setAntiAlias(true);
         _color.setTextSize(25.0f);
+        _red.setStyle(Paint.Style.FILL);
 
         _sweepAngle = 45;
     }
@@ -59,5 +64,12 @@ public class RadarView extends View
         canvas.drawText("0cm", halfWidth + 20, halfHeight + 30, _color);
         canvas.drawText("20cm", halfWidth + radius + 10, halfHeight + 30, _color);
         canvas.drawText("40cm", halfWidth + radius * 2 + 10, halfHeight + 30, _color);
+    }
+
+    public void update(float angle, float objectDistance)
+    {
+        _sweepAngle = angle;
+
+        postInvalidate();
     }
 }
