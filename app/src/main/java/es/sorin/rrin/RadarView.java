@@ -10,6 +10,9 @@ import java.util.ArrayList;
 
 public class RadarView extends View
 {
+    private final float MAX_OBJECT_DISTANCE_CM = 100.0f;
+    private final int MAX_POINTS_ON_RADAR = 20;
+    private final float MAX_POINT_LIFE_MS = 5000;
     private final Paint _color;
     private final Paint _red;
     private float _sweepAngle;
@@ -85,7 +88,7 @@ public class RadarView extends View
         //Check if any available points need to be removed.
         for(int i = 0; i < _points.size(); )
         {
-            if(_points.get(i).getLifeMs() > 5000)
+            if(_points.get(i).getLifeMs() > MAX_POINT_LIFE_MS)
             {
                 _points.remove(i);
             }
@@ -98,7 +101,7 @@ public class RadarView extends View
         //Draw detected points.
         for(RadarPoint p : _points)
         {
-            final float length = (p.getDistance() / 40.0f) * maxRadius;
+            final float length = (p.getDistance() / MAX_OBJECT_DISTANCE_CM) * maxRadius;
             final float px = halfWidth + (float)Math.cos(Math.toRadians(p.getAngle())) * length;
             final float py = halfHeight - (float)Math.sin(Math.toRadians(p.getAngle())) * length;
 
@@ -110,10 +113,11 @@ public class RadarView extends View
     {
         _sweepAngle = angle;
 
-        if(objectDistance <= 40)
+        //Only add the point if it is within the max allowed distance.
+        if(objectDistance <= MAX_OBJECT_DISTANCE_CM)
         {
             //Remove the oldest point from the array if the max size has been reached.
-            if(_points.size() > 10)
+            if(_points.size() > MAX_POINTS_ON_RADAR)
             {
                 _points.remove(0);
             }
