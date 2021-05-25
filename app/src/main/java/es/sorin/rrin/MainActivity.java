@@ -13,5 +13,12 @@ public class MainActivity extends Activity
         setContentView(R.layout.activity_main);
 
         _radarView = findViewById(R.id.Radar);
+
+        new BluetoothDataReader(this);
+    }
+
+    public void updateRadar(float angle, float objectDistance)
+    {
+        _radarView.update(angle, objectDistance);
     }
 }
