@@ -48,8 +48,8 @@ public class RadarView extends View
         canvas.drawCircle(halfWidth, halfHeight, 20, _color);
 
         //Sweep line.
-        final float x = halfWidth + (float)Math.cos(_sweepAngle) * halfWidth;
-        final float y = halfHeight - (float)Math.sin(_sweepAngle) * halfWidth;
+        final float x = halfWidth + (float)Math.cos(Math.toRadians(_sweepAngle)) * halfWidth;
+        final float y = halfHeight - (float)Math.sin(Math.toRadians(_sweepAngle)) * halfWidth;
 
         canvas.drawLine(halfWidth, halfHeight, x, y, _color);
 
