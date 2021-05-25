@@ -16,4 +16,14 @@ public class RadarPoint
     {
         return System.currentTimeMillis() - _startTime;
     }
+
+    public float getAngle()
+    {
+        return _angle;
+    }
+
+    public float getDistance()
+    {
+        return _distance;
+    }
 }
