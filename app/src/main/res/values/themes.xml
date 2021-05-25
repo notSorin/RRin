@@ -2,5 +2,6 @@
     <!-- Base application theme. -->
     <style name="Theme.RRin" parent="android:Theme.DeviceDefault.Light">
         <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
     </style>
 </resources>
