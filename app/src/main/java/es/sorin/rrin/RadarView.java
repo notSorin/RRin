@@ -20,6 +20,7 @@ public class RadarView extends View
         _color.setColor(0xFF17d801);
         _color.setStrokeWidth(10.0f);
         _color.setAntiAlias(true);
+        _color.setTextSize(25.0f);
 
         _sweepAngle = 45;
     }
@@ -31,15 +32,16 @@ public class RadarView extends View
         final float halfWidth = width / 2.0f;
         final float height = getHeight();
         final float halfHeight = height / 2.0f;
+        final float radius = (halfWidth - 20) / 3.0f;
 
         //Solid background.
         canvas.drawARGB(255, 5, 4, 4);
 
         //Radar.
         _color.setStyle(Paint.Style.STROKE);
-        canvas.drawCircle(halfWidth, halfHeight, halfWidth - 20, _color);
-        canvas.drawCircle(halfWidth, halfHeight, halfWidth - 120, _color);
-        canvas.drawCircle(halfWidth, halfHeight, halfWidth - 220, _color);
+        canvas.drawCircle(halfWidth, halfHeight, radius, _color);
+        canvas.drawCircle(halfWidth, halfHeight, radius * 2, _color);
+        canvas.drawCircle(halfWidth, halfHeight, radius * 3, _color);
         canvas.drawLine(halfWidth, 100, halfWidth, halfHeight - 100, _color);
         canvas.drawLine(halfWidth, halfHeight + 100, halfWidth, height - 100, _color);
         canvas.drawLine(0, halfHeight, halfWidth - 100, halfHeight, _color);
@@ -54,6 +56,8 @@ public class RadarView extends View
         canvas.drawLine(halfWidth, halfHeight, x, y, _color);
 
         //Text.
-        //TODO
+        canvas.drawText("0cm", halfWidth + 20, halfHeight + 30, _color);
+        canvas.drawText("20cm", halfWidth + radius + 10, halfHeight + 30, _color);
+        canvas.drawText("40cm", halfWidth + radius * 2 + 10, halfHeight + 30, _color);
     }
 }
